@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Invitation from './components/Invitation';
 import ThemedParty from './components/ThemedDecorations';
 
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Route exact path="/invitation" render={Invitation} />
+        <Route exact path="/themedparty" render={ThemedParty} />
+      </div>
+    </Router>
+  );
+};
+
 ReactDOM.render(
-  <div>
-    <Invitation>Hey, you should totally come to this awesome party I'm throwing!</Invitation>
-    <ThemedParty theme="heaven">
-      <p>A decoration</p>
-      <p>Some other decoration</p>
-      <p>A last decoration</p>
-    </ThemedParty>
-  </div>,
+  <App />,
   document.getElementById('root')
 );
